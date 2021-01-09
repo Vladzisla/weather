@@ -32,3 +32,17 @@ xhr.onload = function () {
         }
     }
 }
+
+function getWeather() {
+    let lat = list.options[list.selectedIndex].dataset.lat,
+        lon = list.options[list.selectedIndex].dataset.lng
+
+    xhr.open('GET', `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`, true)
+    xhr.send()
+    xhr.onload = function () {
+        weatherSpan.innerText = JSON.parse(xhr.responseText).weather[0].main
+        temperatureSpan.innerText = 'Temperature: ' + JSON.parse(xhr.responseText).main.temp + '℃'
+        pressureSpan.innerText = 'Pressure: ' + JSON.parse(xhr.responseText).main.pressure + 'hPa'
+        windSpan.innerText = 'Wind speed: ' + JSON.parse(xhr.responseText).wind.speed + 'm/s'
+    }
+}
