@@ -31,6 +31,7 @@ axios.get('https://gist.githubusercontent.com/alex-oleshkevich/6946d85bf075a6049
         }
     })
 
+
 function getWeather() {
     const lat = list.options[list.selectedIndex].dataset.lat,
         lon = list.options[list.selectedIndex].dataset.lng;
